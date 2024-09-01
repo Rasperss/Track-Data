@@ -100,7 +100,7 @@ EOL
 
 echo "docker-compose.yml has been created"
 
-# Path to the docker-compose.yml file
+####Path to the haproxy.cfg file
 FILE="/home/racing/haproxy/haproxy.cfg"
 
 #####Write the content to the haproxy file
