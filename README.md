@@ -18,13 +18,13 @@ Looking for a way to use Torque Pro Web Server Data API?! ... Look no further be
 9. sudo mv /root/everything_else.sh /home/racing/everything_else.sh
 10. sudo chown racing:racing everything_else.sh
 11. chmod +x everything_else.sh
-12. nano everything_else.sh (change all the passwords for Influxdb & Grafana)
+12. nano everything_else.sh (change all the passwords for Influxdb & Grafana, also include the .pem for your domain or change the haproxy config from " *:443 ssl crt /path/to/cert " to " *:80 ")
 13. ./everything_else.sh
 14. cd /home/racing/docker
 15. sudo docker compose up -d
 16. Login to your InfluxDB server (http://[public IP]:8086) [You may need create a firewall rule on your cloud provider to allow the connection]
-17. Create your account, admin + password, Create your Org name as well.
-18. Go to Data, create a bucket called Track-Data.
+17. Create your account, admin + password, Create your Org name " Racing ".
+18. Go to Data, create a bucket called track-data.
 19. Go to the Token tab and generate a new token. (call it Tomcat and save the token)
 20. Now generate a Bearer Token for the java api (multiple different ways to do this, or just create a secret key, whatever)
 21. nano /home/racing/api/src/main/java/com/api/InfluxdbDataInject.java (add the Bearer token you created to the file. And add your InfluxDB token to it as well)
@@ -37,7 +37,7 @@ Looking for a way to use Torque Pro Web Server Data API?! ... Look no further be
 
 # Now lets get Torque Pro configured
 1. Go to your app settings and go to the Data Logging.
-2. Input your web server address. ( https://[yourdomain or public IP]/api/upload )
+2. Input your web server address. ( https://[yourdomain or public IP]/api/upload - use http if you dont have a cert )
 3. Input your bearer token you created and put in the java file
 4. set your logging intervals
 
