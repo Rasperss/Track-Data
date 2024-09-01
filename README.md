@@ -4,7 +4,7 @@ Looking for a way to use Torque Pro Web Server Data API?! ... Look no further be
 
 # Couple things required before you get started
 1. Cloud Hosted Service - Debian or Ubuntu ( You can selfhost but since the data will be sent from your mobile device I wouldnt open your web server to the world )
-3. Web Application Firewall - Cloudflare is free if you own a domain already. ( Super simple firewall rules to off load any unwanted traffic on them instead of your web server )
+3. Web Application Firewall - Cloudflare is free if you own a domain already. ( Super simple firewall rules to off load any unwanted traffic on them instead of your web server or cloud provider )
 
 # After spinning up your Debian or Ubuntu server and SSHing into the server Run the following commands
 1. sudo apt update && sudo apt upgrade -y
