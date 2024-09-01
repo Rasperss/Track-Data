@@ -21,7 +21,7 @@ public class InfluxdbDataInject extends HttpServlet {
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().println("Unauthorized: Bearer token missing or invalid.");
+            response.getWriter().println("Unauthorized: Bearer token missing.");
             return;
         }
 
@@ -70,6 +70,6 @@ public class InfluxdbDataInject extends HttpServlet {
         }
 
         int responseCode = connection.getResponseCode();
-        response.getWriter().println("InfluxDB response code: " + responseCode);
+        response.getWriter().println("Influx responded with a: " + responseCode);
     }
 }
