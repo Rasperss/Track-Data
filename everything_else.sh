@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Ensure you have updated all nessacary fields (passwords) and ran create_user_update.sh... checking..."
+echo "Ensure you have updated all nessacary fields (passwords) and ran create_user_update.sh... ..."
 sleep 5
 
 apt install openjdk-11-jdk -y
@@ -9,34 +9,26 @@ echo "OpenJDK 11 has been installed"
 apt install maven -y
 echo "Maven has been installed"
 
-apt-get install ca-certificates curl
+apt install ca-certificates curl -y
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 chmod a+r /etc/apt/keyrings/docker.asc
 
-# Add the repository to Apt sources:
+####Add the repository for docker
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt-get update
+apt update -y
 
 apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
 mkdir certs docker haproxy tomcat
 
-# Directory where the docker-compose.yml file will be created
-DIRECTORY="/home/racing/docker/"
+####Path to the docker-compose.yml
+FILE="/home/racing/docker/docker-compose.yml"
 
-# Check if the directory exists; if not, create it
-if [ ! -d "$DIRECTORY" ]; then
-  mkdir -p "$DIRECTORY"
-fi
-
-# Path to the docker-compose.yml file
-FILE="$DIRECTORY/docker-compose.yml"
-
-# Write the content to the docker-compose.yml file
+####Write the content to the docker-compose file
 cat <<EOL > $FILE
 version: '3.8'
 
@@ -106,20 +98,12 @@ volumes:
     driver: local
 EOL
 
-echo "docker-compose.yml has been created in $DIRECTORY"
-
-# Directory where the docker-compose.yml file will be created
-DIRECTORY2="/home/racing/haproxy/"
-
-# Check if the directory exists; if not, create it
-if [ ! -d "$DIRECTORY2" ]; then
-  mkdir -p "$DIRECTORY2"
-fi
+echo "docker-compose.yml has been created"
 
 # Path to the docker-compose.yml file
-FILE="$DIRECTORY2/haproxy.cfg"
+FILE="/home/racing/haproxy/haproxy.cfg"
 
-# Write the content to the docker-compose.yml file
+#####Write the content to the haproxy file
 cat <<EOL > $FILE
 
 frontend http_front
@@ -137,7 +121,7 @@ backend http_back
 
 EOL
 
-echo "haproxy.cfg has been created in $DIRECTORY2"
+echo "haproxy.cfg has been created"
 sleep 3
 echo "Now cd to /home/racing/docker and run sudo docker compose up -d"
 sleep 3
