@@ -13,6 +13,7 @@ import java.util.Enumeration;
 
 public class InfluxdbDataInject extends HttpServlet {
 
+    // DONT FORGET TO CHANGE THE BEARER TOKEN VALUE BEFORE COMPILING!
     private static final String BEARER_TOKEN = "<input your created bearer token generate a UUID or it can be a secret key whater>";
 
     @Override
