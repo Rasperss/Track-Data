@@ -3,7 +3,7 @@
 # Define variables
 USERNAME="racing"
 PASSWORD="ChangeMe!"
-SUDO_GROUP="sudo"
+GROUP="sudo"
 
 # Check if the user already exists
 if id "$USERNAME" &>/dev/null; then
@@ -14,7 +14,7 @@ else
     echo "$USERNAME:$PASSWORD" | chpasswd
 
     # Add the user to the sudo group
-    usermod -aG "$SUDO_GROUP" "$USERNAME"
+    usermod -aG "$GROUP" "$USERNAME"
 
     echo "User $USERNAME has been created and added to the sudo group, now updating server in 5 seconds."
 fi
