@@ -61,7 +61,7 @@ public class InfluxdbDataInject extends HttpServlet {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         //////// DONT FORGET TO CHANGE THE INFLUXDB TOKEN BEFORE COMPILING!
-        connection.setRequestProperty("Authorization", "Token <Influxdb Token generated specific to the bucket write/read>");
+        connection.setRequestProperty("Authorization", "Token <Influxdb Token generated specific to the bucket write>");
         connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
         connection.setDoOutput(true);
 
