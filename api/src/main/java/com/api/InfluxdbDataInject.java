@@ -13,7 +13,7 @@ import java.util.Enumeration;
 
 public class InfluxdbDataInject extends HttpServlet {
 
-    // DONT FORGET TO CHANGE THE BEARER TOKEN VALUE BEFORE COMPILING!
+    /////// DONT FORGET TO CHANGE THE BEARER TOKEN VALUE BEFORE COMPILING!
     private static final String BEARER_TOKEN = "<input your created bearer token generate a UUID or it can be a secret key whater>";
 
     @Override
@@ -60,6 +60,7 @@ public class InfluxdbDataInject extends HttpServlet {
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
+        //////// DONT FORGET TO CHANGE THE INFLUXDB TOKEN BEFORE COMPILING!
         connection.setRequestProperty("Authorization", "Token <Influxdb Token generated specific to the bucket write/read>");
         connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
         connection.setDoOutput(true);
