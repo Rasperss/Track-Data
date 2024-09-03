@@ -42,6 +42,3 @@ Looking for a way to use Torque Pro Web Server Data API?! ... Look no further be
 4. set your logging intervals
 
 # Once connected to your car you should start to send data
-
-# Creating dashboards with your data in Grafana
-1.
