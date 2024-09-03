@@ -35,13 +35,11 @@ public class InfluxdbDataInject extends HttpServlet {
         String session = request.getParameter("session");
         String id = request.getParameter("id");
 
-        // Build the InfluxDB data string
         StringBuilder influxData = new StringBuilder("racing_import,session=");
         influxData.append(session).append(",eml=\"unknown\",id=\"").append(id).append("\"");
 
         boolean firstField = true;
 
-        // Append the fields to the data string
         Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements()) {
             String paramName = parameterNames.nextElement();
